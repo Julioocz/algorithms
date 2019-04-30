@@ -1,6 +1,6 @@
 import random
 
-from sorting import selection_sort, insertion_sort, bubble_sort
+from sorting import selection_sort, insertion_sort, bubble_sort, merge_sort
 
 
 def _test_sort_algorithm(algorithm):
@@ -19,3 +19,7 @@ def test_insertion_sort():
 
 def test_bubble_sort():
     _test_sort_algorithm(bubble_sort)
+
+
+def test_merge_sort():
+    _test_sort_algorithm(merge_sort)

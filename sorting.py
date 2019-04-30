@@ -11,6 +11,7 @@ def insertion_sort(array):
 
     return array
 
+
 def selection_sort(array):
     for slot in range(0, len(array)):
         min_val = None
@@ -40,3 +41,37 @@ def bubble_sort(array):
                 swap = True
 
     return array
+
+
+def _merge_ordered_arrays(left, right):
+    result = []
+    i = 0
+    j = 0
+    for _ in range(len(left) + len(right)):
+        if i == len(left):
+            result.extend(right[j:])
+            break
+        elif j == len(right):
+            result.extend(left[i:])
+            break
+
+        left_el = left[i]
+        right_el = right[j]
+        if left_el <= right_el:
+            result.append(left_el)
+            i += 1
+        elif right_el < left_el:
+            result.append(right_el)
+            j += 1
+
+    return result
+
+
+def merge_sort(array):
+    if len(array) <= 1:
+        return array
+
+    half = len(array) // 2
+    left_array = merge_sort(array[:half])
+    right_array = merge_sort(array[half:])
+    return _merge_ordered_arrays(left_array, right_array)
